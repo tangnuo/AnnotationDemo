@@ -31,7 +31,5 @@ dependencies {
 
     implementation project(':bind-api')
     implementation project(':bind-annotations')
-//    implementation project(':bind-compiler')
-
     annotationProcessor   project(':bind-compiler')
 }
