@@ -4,7 +4,6 @@ import com.google.auto.service.AutoService;
 import com.kedacom.bind_annotations.BindClick;
 import com.kedacom.bind_annotations.BindId;
 import com.kedacom.bind_annotations.BindLayout;
-import com.squareup.javapoet.JavaFile;
 
 import java.io.IOException;
 import java.io.Writer;

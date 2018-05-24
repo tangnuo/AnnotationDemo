@@ -21,6 +21,10 @@ import javax.lang.model.element.VariableElement;
 public class ConfigInfo {
 
     /**
+     * 新文件的后缀
+     */
+    public static final String CLASSSUFFIX = "_CAOWJ";
+    /**
      * 类
      */
     public TypeElement typeElement;
@@ -28,22 +32,15 @@ public class ConfigInfo {
      * 类注解的值（布局ID）
      */
     public int layoutId;
-
     public String packageName;
     /**
      * key为id，也就是成员变量注解的值，value为对应的成员变量
      */
     public Map<Integer, VariableElement> mElements = new HashMap<>();
-
     /**
      * key为id，也就是click方法注解的值，value为对应的click方法
      */
     public Map<Integer, ExecutableElement> mMethods = new HashMap<>();
-
-    /**
-     * 新文件的后缀
-     */
-    public static final String CLASSSUFFIX = "_CAOWJ";
 
     public String getProxyClassFullName() {
         return typeElement.getQualifiedName().toString() + CLASSSUFFIX;
