@@ -14,38 +14,77 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
 
 /**
- * @Dec ：对应需要生成某个类的全部相关信息(拼接字符串)
+ * @Dec ：对应需要生成某个类的全部相关信息
  * @Author : Caowj
  * @Date : 2018/5/23 13:54
  */
 public class ConfigInfo {
 
+    /**
+     * 类
+     */
     public TypeElement typeElement;
+    /**
+     * 类注解的值（布局ID）
+     */
     public int layoutId;
+
     public String packageName;
+    /**
+     * key为id，也就是成员变量注解的值，value为对应的成员变量
+     */
     public Map<Integer, VariableElement> mElements = new HashMap<>();
+
+    /**
+     * key为id，也就是click方法注解的值，value为对应的click方法
+     */
     public Map<Integer, ExecutableElement> mMethods = new HashMap<>();
-    public static final String PROXY = "CAOWJ";
-    public static final String ClassSuffix = "_" + PROXY;
+
+    /**
+     * 新文件的后缀
+     */
+    public static final String CLASSSUFFIX = "_CAOWJ";
 
     public String getProxyClassFullName() {
-        return typeElement.getQualifiedName().toString() + ClassSuffix;
+        return typeElement.getQualifiedName().toString() + CLASSSUFFIX;
     }
 
 
     public String getClassName() {
-        return typeElement.getSimpleName().toString() + ClassSuffix;
+        return typeElement.getSimpleName().toString() + CLASSSUFFIX;
     }
 
 
+    /**
+     * 生成新的Java文件
+     *
+     * @return
+     */
     public String generateJavaCode() {
-//        String str = generateJavaCodeByStringBuilder();
+        //方法一：拼接字符串
+        //String str = generateJavaCodeByStringBuilder();
+
+        //方法二：采用Javapoet
         String str = generateJavaCodeByJavapoet();
+
         return str;
     }
 
+    /******************************************************************************/
+
+    /**
+     * 采用Javapoet生成新类
+     *
+     * @return
+     */
+    private String generateJavaCodeByJavapoet() {
+        return generateJavaFile().toString();
+    }
+
+
     /**
      * 生成javaFile文件
+     *
      * @return
      */
     public JavaFile generateJavaFile() {
@@ -114,18 +153,6 @@ public class ConfigInfo {
                 .build();
         JavaFile javaFile = JavaFile.builder(packageName, typeSpec).build();
         return javaFile;
-    }
-
-
-    /******************************************************************************/
-
-    /**
-     * 采用Javapoet生成新类
-     *
-     * @return
-     */
-    private String generateJavaCodeByJavapoet() {
-        return generateJavaFile().toString();
     }
 
 

@@ -13,6 +13,9 @@ import com.kedacom.bind_annotations.BindId;
 import com.kedacom.bind_annotations.BindLayout;
 import com.kedacom.bind_api.BindUtil;
 
+/**
+ * 使用自定义注解框架
+ */
 @BindLayout(R.layout.activity_demo1_test)
 public class Demo2Activity extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();
