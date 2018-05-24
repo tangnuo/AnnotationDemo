@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AnnotationDemo</string>
+    <string name="str_hint">Hello World</string>
+</resources>
