@@ -1,6 +1,4 @@
-package com.kedacom.annotationdemo.demo1;
-
-import android.view.View;
+package com.kedacom.annotationdemo.demo1.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,10 +8,10 @@ import java.lang.annotation.Target;
 /**
  * @Dec ：
  * @Author : Caowj
- * @Date : 2018/5/23 10:02
+ * @Date : 2018/5/23 10:29
  */
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD})
-public @interface InjectId {
-    int value() default View.NO_ID;
+public @interface InjectClick {
+    int[] value();
 }

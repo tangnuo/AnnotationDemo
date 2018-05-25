@@ -1,4 +1,4 @@
-package com.kedacom.annotationdemo.demo1;
+package com.kedacom.annotationdemo.demo1.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,10 +8,10 @@ import java.lang.annotation.Target;
 /**
  * @Dec ：
  * @Author : Caowj
- * @Date : 2018/5/23 10:29
+ * @Date : 2018/5/23 10:26
  */
-@Target(ElementType.METHOD)
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface InjectClick {
-    int[] value();
+public @interface InjectLayout {
+    int value() default 0;
 }

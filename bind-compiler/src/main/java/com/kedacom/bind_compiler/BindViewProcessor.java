@@ -4,6 +4,7 @@ import com.google.auto.service.AutoService;
 import com.kedacom.bind_annotations.BindClick;
 import com.kedacom.bind_annotations.BindId;
 import com.kedacom.bind_annotations.BindLayout;
+import com.kedacom.bind_compiler.util.ClassValidator;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -55,6 +56,8 @@ public class BindViewProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+        //annotations：里面包含的是所有使用的注解的信息，例如BindView，ContentView
+        //roundEnv：他返回的是所有被注解的元素，例如类，属性等
         collectionInfo(roundEnv);
         generateClass();
         return true;
@@ -163,6 +166,10 @@ public class BindViewProcessor extends AbstractProcessor {
         //收集信息
         for (Element element : elements) {
             if (element.getKind() == ElementKind.FIELD) {
+
+                // 检查element的合法性
+                checkSAnnotationValid(element, BindId.class);
+
                 //获取注解的值
                 BindId findId = element.getAnnotation(BindId.class);
                 if (findId != null) {
@@ -215,6 +222,21 @@ public class BindViewProcessor extends AbstractProcessor {
                 continue;
             }
         }
+    }
+
+    /**
+     * 检查BindView修饰的元素的合法性
+     */
+    private boolean checkSAnnotationValid(Element element, Class<?> clazz) {
+        if (element.getKind() != ElementKind.FIELD) {
+            error(element, "%s must be delared on field.", clazz.getSimpleName());
+            return false;
+        }
+        if (ClassValidator.isPrivate(element)) {
+            error(element, "%s() must can not be private.", element.getSimpleName());
+            return false;
+        }
+        return true;
     }
 
     /**

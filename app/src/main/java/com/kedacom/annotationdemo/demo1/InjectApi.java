@@ -3,6 +3,10 @@ package com.kedacom.annotationdemo.demo1;
 import android.app.Activity;
 import android.view.View;
 
+import com.kedacom.annotationdemo.demo1.annotations.InjectClick;
+import com.kedacom.annotationdemo.demo1.annotations.InjectId;
+import com.kedacom.annotationdemo.demo1.annotations.InjectLayout;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

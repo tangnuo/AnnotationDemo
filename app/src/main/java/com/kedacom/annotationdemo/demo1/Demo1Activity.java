@@ -8,6 +8,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kedacom.annotationdemo.R;
+import com.kedacom.annotationdemo.demo1.annotations.InjectClick;
+import com.kedacom.annotationdemo.demo1.annotations.InjectId;
+import com.kedacom.annotationdemo.demo1.annotations.InjectLayout;
 
 /**
  * 使用反射解析运行时注解
