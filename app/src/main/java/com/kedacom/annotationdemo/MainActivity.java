@@ -8,9 +8,10 @@ import android.widget.Button;
 
 import com.kedacom.annotationdemo.demo1.Demo1Activity;
 import com.kedacom.annotationdemo.demo2.Demo2Activity;
+import com.kedacom.annotationdemo.demo3.Demo3Activity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button button1, button2;
+    private Button button1, button2, button3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +25,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         button1 = findViewById(R.id.btn1);
         button2 = findViewById(R.id.btn2);
+        button3 = findViewById(R.id.btn3);
 
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
+        button3.setOnClickListener(this);
     }
 
     @Override
@@ -42,6 +45,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn2:
                 mIntent = new Intent();
                 mIntent.setClass(this, Demo2Activity.class);
+                startActivity(mIntent);
+                break;
+            case R.id.btn3:
+                mIntent = new Intent();
+                mIntent.setClass(this, Demo3Activity.class);
                 startActivity(mIntent);
                 break;
         }

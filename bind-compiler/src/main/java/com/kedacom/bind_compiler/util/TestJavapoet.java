@@ -1,4 +1,4 @@
-package com.kedacom.bind_compiler;
+package com.kedacom.bind_compiler.util;
 
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;

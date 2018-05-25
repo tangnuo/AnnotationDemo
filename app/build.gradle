@@ -31,5 +31,6 @@ dependencies {
 
     implementation project(':bind-api')
     implementation project(':bind-annotations')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     annotationProcessor project(':bind-compiler')
 }

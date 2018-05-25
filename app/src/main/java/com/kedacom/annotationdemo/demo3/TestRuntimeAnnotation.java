@@ -1,4 +1,4 @@
-package com.kedacom.annotationdemo.demo1;
+package com.kedacom.annotationdemo.demo3;
 
 import com.kedacom.annotationdemo.demo1.annotations.ClassInfo;
 import com.kedacom.annotationdemo.demo1.annotations.FieldInfo;
